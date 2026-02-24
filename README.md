@@ -123,7 +123,7 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 
 > Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
 
-*Python scripts and data processing: J. Birba.*
+*Project conducted as part of a team. Python implementation, Pose2Sim pipeline and data processing: J. Birba.*
 
 
 *Jérémy Birba — [LinkedIn](https://linkedin.com/in/birba-jeremy) | [GitHub](https://github.com/JeremyDataHub)*
