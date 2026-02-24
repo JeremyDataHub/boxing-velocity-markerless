@@ -72,8 +72,8 @@ Full implementation in `punch_velocity.py`. Raw `.trc` data not included for pri
 
 <table>
   <tr>
-    <td align="center"><img src="figures/velocity_resultant_left_s1.png" width="450" alt="Left wrist resultant"/><br/><em>Left wrist — Resultant — Subject 1</em></td>
-    <td align="center"><img src="figures/velocity_resultant_right_s1.png" width="450" alt="Right wrist resultant"/><br/><em>Right wrist — Resultant — Subject 1</em></td>
+    <td align="center"><img src="figures/velocity_resultant_left_s1.png" width="550" alt="Left wrist resultant"/><br/><em>Left wrist — Resultant — Subject 1</em></td>
+    <td align="center"><img src="figures/velocity_resultant_right_s1.png" width="550" alt="Right wrist resultant"/><br/><em>Right wrist — Resultant — Subject 1</em></td>
   </tr>
 </table>
 
