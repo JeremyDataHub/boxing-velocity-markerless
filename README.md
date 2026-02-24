@@ -147,33 +147,6 @@ Introducing a vertical jump at the start of each recording created a strong temp
 | Visualization | Matplotlib |
 | Hardware | GoPro ×3, Smartphones ×2 |
 
-
-## Potential Applications
-
-This markerless 3D motion analysis framework can be adapted to various domains beyond combat sports.
-
-### Sports Science
-Combat sports performance analysis (boxing, MMA, fencing), racket sports swing analysis (tennis, badminton), and movement quality assessment in athletics.
-
-### Rehabilitation & Healthcare
-Gait analysis in clinical settings, post-injury movement monitoring, and elderly fall risk assessment.
-
-### Ergonomics & Industry
-Workplace motion assessment, manual handling risk evaluation, and human-robot interaction studies.
-
-### Research
-Biomechanics studies in ecological conditions, multi-camera 3D reconstruction validation, and markerless versus marker-based comparison protocols.
-
-
-## Limitations & Future Work
-
-### Current Implementation
-Protocol validated in controlled lab conditions using smartphones. Analysis conducted on two non-competitive subjects. No ground-truth comparison with marker-based motion capture systems. Wrist used as proxy for fist velocity.
-
-### Next Steps for Ecological Deployment
-Adapt calibration procedures for larger inter-camera distances typical of ring environments. Optimize overhead fish-eye calibration workflow to handle severe distortion. Conduct multi-subject robustness testing in actual ring environment. Integrate with VR performance comparison component (REVEA program objective).
-
-
 ## Academic Reference
 
 This project was conducted as part of:
