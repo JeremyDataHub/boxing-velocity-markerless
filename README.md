@@ -4,9 +4,7 @@
 [![Pose2Sim](https://img.shields.io/badge/Pose2Sim-markerless-green.svg)](https://github.com/perfanalytics/pose2sim)
 [![SciPy](https://img.shields.io/badge/SciPy-signal_processing-orange.svg)](https://scipy.org/)
 
-> Multi-camera markerless pipeline for 3D punch velocity estimation in ecological conditions. Developed within the REVEA research program — French Boxing Federation × M2S Laboratory, Université Rennes 2.
-
-![Ring setup with cameras](*add figure here*)
+> Multi-camera markerless pipeline for 3D punch velocity estimation in ecological conditions. Developed within the REVEA research program — French Boxing Federation × M2S Laboratory, Rennes 2 University.
 
 
 ## Context
@@ -26,7 +24,7 @@ The original setup used 3 GoPro cameras in the boxing ring. Extrinsic calibratio
 
 A controlled proof-of-concept was conducted using 2 synchronized smartphones in a lab environment, where calibration conditions could be optimized. This setup produced the results presented below.
 
-![Pose2Sim functional diagram](*add figure here*)
+![Pose2Sim functional diagram](figures/pose2sim_diagram.png)
 
 
 ## Pipeline
@@ -54,7 +52,7 @@ vitesses_poings.py
  └── Punch detection (scipy.signal.find_peaks)
 ```
 
-![Pose2Sim skeleton tracking on boxers](*add GIF here*)
+![Pose estimation visualization](figures/pose_estimation_visualization.gif)
 
 
 ## Velocity Computation
@@ -126,5 +124,6 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 > Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
 
 *Python scripts and data processing: J. Birba.*
+
 
 *Jérémy Birba — [LinkedIn](https://linkedin.com/in/birba-jeremy) | [GitHub](https://github.com/JeremyDataHub)*
