@@ -78,27 +78,27 @@ A controlled proof-of-concept was therefore conducted using two synchronized sma
 ```
 Camera 1 (Smartphone 1080p 60fps)  ──┐
                                      ├──▶ Synchronization
-Camera 2 (Smartphone 1080p 60fps)  ──┘           │
+Camera 2 (Smartphone 1080p 60fps)  ──┘            │
                                                   ▼
-                           Intrinsic Calibration (Pose2Sim)
+                                 Intrinsic Calibration (Pose2Sim)
                                                   │
                                                   ▼
-                           Extrinsic Calibration (Pose2Sim)
+                                 Extrinsic Calibration (Pose2Sim)
                                                   │
                                                   ▼
-                       2D Pose Estimation per Camera (Pose2Sim)
+                              2D Pose Estimation per Camera (Pose2Sim)
                                                   │
                                                   ▼
-                              3D Triangulation (Pose2Sim)
+                                  3D Triangulation (Pose2Sim)
                                                   │
                                                   ▼
-                           3D Joint Positions (.trc Output)
+                                3D Joint Positions (.trc Output)
                                                   │
                                                   ▼
-                                Velocity Computation
+                                         Velocity Computation
                                                   │
                                                   ▼
-                           Peak Detection (Threshold 4 m/s)
+                                   Peak Detection (4m/s Threshold)
 ```
 
 This validated protocol can now be adapted to the original ring setup with improved calibration procedures (larger checkerboard format, optimized camera placement).
@@ -178,17 +178,4 @@ Adapt calibration procedures for larger inter-camera distances typical of ring e
 
 This project was conducted as part of:
 
-> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 1 DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
-
-
-## Citation & Usage
-
-This project was conducted within the REVEA research program (M2S Laboratory × French Boxing Federation).
-
-**For academic or research citation:**
-
-> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D Boxing Velocity Estimation. REVEA Program, Université Rennes 2.
-
-**For collaboration or commercial inquiries:** [Remplace par ton email ou LinkedIn]
-
-**License:** Open for portfolio review and academic discussion. Contact for other uses.
+> Birba, J., Giot, B., Le Gall, M. (2025). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2 DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
