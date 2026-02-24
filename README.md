@@ -4,7 +4,7 @@
 
 ![Ring setup](media/ring_setup.jpg)
 
-## Key Results
+## Results
 
 Feasibility study on two subjects in real ring conditions.
 
