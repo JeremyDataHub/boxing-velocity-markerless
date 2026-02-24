@@ -57,9 +57,7 @@ This led to the selection of **Pose2Sim**.
 
 ## Pose2Sim
 
-**[Pose2Sim GitHub Repository](https://github.com/perfanalytics/pose2sim)**
-
-Pose2Sim is an open-source markerless motion capture pipeline that:
+**[Pose2Sim](https://github.com/perfanalytics/pose2sim)** is an open-source markerless motion capture pipeline that:
 
 - Uses synchronized multi-camera videos  
 - Performs intrinsic and extrinsic calibration  
