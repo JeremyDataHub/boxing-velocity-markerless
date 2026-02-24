@@ -1,10 +1,6 @@
-# boxing-velocity-markerless
-
-> 3D markerless estimation of boxing punch velocity using multi-camera video and Pose2Sim.
-
 # Markerless 3D Boxing Punch Velocity Estimation
 
-Markerless 3D motion capture pipeline for estimating boxing punch velocity in ecological conditions.
+> Markerless 3D motion capture pipeline for estimating boxing punch velocity in ecological conditions.
 
 ![Ring setup](media/ring_setup.jpg)
 
