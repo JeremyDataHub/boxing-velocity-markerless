@@ -45,7 +45,7 @@ Pose2Sim
 .trc output — 3D joint positions over time
         │
         ▼
-vitesses_poings.py
+punch_velocity.py
  ├── Wrist position extraction
  ├── Velocity per axis (np.gradient)
  ├── Resultant velocity
@@ -61,7 +61,7 @@ vitesses_poings.py
 
 $$v = \sqrt{v_x^2 + v_y^2 + v_z^2}$$
 
-Full implementation in `vitesses_poings.py`. Raw `.trc` data not included for privacy reasons.
+Full implementation in `punch_velocity.py`. Raw `.trc` data not included for privacy reasons.
 
 <table>
   <tr>
