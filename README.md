@@ -106,7 +106,7 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 
 | Category | Tools |
 |----------|-------|
-| 3D markerless capture | Pose2Sim (Pagnon, 2022) |
+| 3D markerless capture | [Pose2Sim](https://github.com/perfanalytics/pose2sim) (Pagnon, 2022) |
 | Programming | Python |
 | Signal processing | NumPy, SciPy |
 | Visualization | Matplotlib |
