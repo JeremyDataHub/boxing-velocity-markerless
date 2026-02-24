@@ -65,9 +65,19 @@ $$v = \sqrt{v_x^2 + v_y^2 + v_z^2}$$
 
 Full implementation in `vitesses_poings.py`. Raw `.trc` data not included for privacy reasons.
 
-![Velocity per axis — wrist trajectories](*add figure here*)
+<table>
+  <tr>
+    <td align="center"><img src="figures/velocity_axes_left_s1.png" width="450" alt="Left wrist all axes"/><br/><em>Left wrist — All axes — Subject 1</em></td>
+    <td align="center"><img src="figures/velocity_axes_right_s1.png" width="450" alt="Right wrist all axes"/><br/><em>Right wrist — All axes — Subject 1</em></td>
+  </tr>
+</table>
 
-![Resultant velocity with detected punches](*add figure here*)
+<table>
+  <tr>
+    <td align="center"><img src="figures/velocity_resultant_left_s1.png" width="450" alt="Left wrist resultant"/><br/><em>Left wrist — Resultant — Subject 1</em></td>
+    <td align="center"><img src="figures/velocity_resultant_right_s1.png" width="450" alt="Right wrist resultant"/><br/><em>Right wrist — Resultant — Subject 1</em></td>
+  </tr>
+</table>
 
 A threshold of ~4 m/s was identified to distinguish effective punches from guard movements and repositioning.
 
