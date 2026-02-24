@@ -179,3 +179,5 @@ Adapt calibration procedures for larger inter-camera distances typical of ring e
 This project was conducted as part of:
 
 > Birba, J., Giot, B., Le Gall, M. (2025). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2 DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
+
+*Jérémy Birba | [LinkedIn](https://linkedin.com/in/birba-jeremy)*
