@@ -1,78 +1,74 @@
 # Markerless 3D Boxing Punch Velocity Estimation
 
-> Markerless 3D motion capture pipeline for estimating boxing punch velocity in ecological conditions. Developed as part of the REVEA research program in partnership with the French Boxing Federation and the M2S Laboratory, Rennes 2 University.
+> Multi-camera markerless motion capture pipeline for estimating 3D boxing punch velocity in ecological conditions. Developed within the REVEA research program (French Boxing Federation × M2S Laboratory, Université Rennes 2).
 
 
-![Ring Setup](media/ring_setup.jpg)
+<p align="center">
+  <img src="media/ring_setup.jpg" alt="Boxing ring multi-camera setup"/>
+</p>
 
 
-## Key Results
+## Results
 
-Feasibility study conducted in real ring conditions using multi camera markerless capture.
-
-| Subject | Wrist | Max velocity (m/s) | Mean velocity (m/s) |
+| Subject | Wrist | Max Velocity (m/s) | Mean Velocity (m/s) |
 |----------|--------|-------------------|---------------------|
 | Subject 1 | Right | 11.41 | 6.21 |
 | Subject 1 | Left  | 7.08  | 5.32 |
 | Subject 2 | Right | 8.48  | 6.39 |
 | Subject 2 | Left  | 4.80  | 4.74 |
 
-A velocity threshold of approximately 4 m/s was identified to distinguish effective punches from guard movements and repositioning.
+A velocity threshold of **4 m/s** allows automatic discrimination between effective punches and guard repositioning movements.
 
-![Velocity Example](figures/jeremy_resultant_velocity.png)
-
-
-## Context
-
-The REVEA research program uses virtual reality to optimize athletic performance. In partnership with the French Boxing Federation, researchers at the M2S Laboratory needed to measure real punch velocities in order to compare boxer performance between real and virtual environments.
-
-The core constraint was that motion capture had to be markerless. Data acquisition takes place in ecological conditions in a real boxing ring without interrupting athletes.
-
-The objective of this project was to develop and validate a video based markerless method capable of measuring punch velocity for future integration into the REVEA real versus virtual comparison protocol.
+<p align="center">
+  <img src="figures/jeremy_resultant_velocity.png" width="600" alt="Resultant wrist velocity"/>
+  <br/>
+  <em>Example of resultant wrist velocity with detected peaks</em>
+</p>
 
 
-## Approach
+## Problem Context
 
-Four solutions were evaluated:
+The REVEA research program aims to compare athletic performance between real and virtual environments using immersive VR protocols.
 
-Sports2D  
-DeepLabCut  
-OpenCV  
-Pose2Sim  
+In boxing, punches are executed in fully three-dimensional space. Fighters continuously rotate, translate and change orientation inside the ring. A single planar 2D analysis is therefore insufficient.
 
-Pose2Sim was selected. It is an open source markerless motion capture pipeline developed by David Pagnon. It enables 3D reconstruction from synchronized multi camera videos and exports biomechanical data in OpenSim compatible formats.
+Additionally, motion capture had to be markerless because recordings were performed during real sparring sessions under ecological conditions.
 
-Pose2Sim was installed, configured, calibrated and tested across multiple acquisition setups.
+The challenge was to design a robust multi-camera video pipeline capable of estimating 3D punch velocity without markers and without disrupting athletes.
 
 
-## Pipeline Overview
+## Evaluated Approaches
 
-Multi camera video acquisition  
-↓  
-Pose2Sim processing  
+Several solutions were explored:
 
-• Intrinsic calibration using checkerboard  
-• Extrinsic calibration  
-• Pose estimation  
-• Camera synchronization  
-• 3D triangulation  
-• Filtering  
+- **Sports2D**  
+  Limited to planar 2D analysis. Not suitable for rotating athletes.
 
-↓  
+- **DeepLabCut**  
+  Requires extensive manual labeling. 3D reconstruction requires additional complex setup.
 
-.trc output file containing 3D joint positions over time  
+- **Custom OpenCV tracking**  
+  Technically feasible but would require full multi-view 3D reconstruction implementation.
 
-↓  
+Because boxers move freely in space and continuously rotate relative to cameras, a full 3D reconstruction framework was necessary.
 
-Python post processing  
-
-• Wrist position extraction  
-• Numerical time derivation using numpy.gradient  
-• Resultant velocity computation √(vx² + vy² + vz²)  
-• Peak detection using scipy.signal.find_peaks  
+This led to the selection of **Pose2Sim**.
 
 
-![Pose2Sim Reconstruction](media/pose2sim_skeleton.gif)
+## Pose2Sim
+
+**[Pose2Sim GitHub Repository](https://github.com/perfanalytics/pose2sim)**
+
+Pose2Sim is an open-source markerless motion capture pipeline that:
+
+- Uses synchronized multi-camera videos  
+- Performs intrinsic and extrinsic calibration  
+- Reconstructs 3D joint trajectories via triangulation  
+- Exports joint coordinates in `.trc` format  
+
+When cameras are properly calibrated and synchronized, Pose2Sim generates temporally consistent 3D coordinates of body joints, enabling biomechanical analysis.
+
+In this project, the exported `.trc` files were used to compute punch velocities directly from reconstructed wrist trajectories.
 
 
-## Repository Structure
+## System Pipeline
