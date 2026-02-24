@@ -20,7 +20,7 @@ The goal was to develop and validate a markerless video-based method for punch v
 
 ## Approach
 
-Four solutions were evaluated: Sports2D, DeepLabCut, and OpenCV (2D approaches), and **Pose2Sim** (3D). Pose2Sim was selected — an open-source pipeline developed by David Pagnon connecting multi-camera pose estimation to biomechanical analysis.
+Four solutions were evaluated: Sports2D, DeepLabCut, and OpenCV (2D approaches), and **Pose2Sim** (3D). **[Pose2Sim](https://github.com/perfanalytics/pose2sim)** was selected. It is an open-source pipeline developed by David Pagnon connecting multi-camera pose estimation to biomechanical analysis.
 
 The original setup used 3 GoPro cameras in the boxing ring. Extrinsic calibration attempts with both checkerboard and scene-point methods did not yield exploitable results, due to fish-eye distortion on the overhead camera and large inter-camera distances.
 
