@@ -8,7 +8,6 @@
 
 ![Ring setup with cameras](*add figure here*)
 
----
 
 ## Context
 
@@ -18,7 +17,6 @@ The constraint: motion capture had to be markerless, as recordings take place du
 
 The goal was to develop and validate a markerless video-based method for punch velocity measurement, for future integration into the REVEA VR/real comparison protocol.
 
----
 
 ## Approach
 
@@ -30,7 +28,6 @@ A controlled proof-of-concept was conducted using 2 synchronized smartphones in 
 
 ![Pose2Sim functional diagram](*add figure here*)
 
----
 
 ## Pipeline
 
@@ -59,7 +56,6 @@ vitesses_poings.py
 
 ![Pose2Sim skeleton tracking on boxers](*add GIF here*)
 
----
 
 ## Velocity Computation
 
@@ -75,7 +71,6 @@ Full implementation in `vitesses_poings.py`. Raw `.trc` data not included for pr
 
 A threshold of ~4 m/s was identified to distinguish effective punches from guard movements and repositioning.
 
----
 
 ## Results
 
@@ -90,7 +85,6 @@ Proof-of-concept on two subjects performing boxing sequences.
 
 For reference, punch velocities in amateur boxing typically range from 4 to 8 m/s.
 
----
 
 ## Key Challenges
 
@@ -99,8 +93,6 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 **Multi-person pose estimation** — Pose2Sim's multi-person mode produced unstable reconstructions due to occlusions and overlapping limbs during sparring. Single-subject processing on isolated sequences was adopted.
 
 **Camera synchronization** — Initial cross-correlation scores were below 0.5. A vertical jump at the start of each recording provided a reliable temporal alignment signal.
-
----
 
 ## Tech Stack
 
@@ -112,8 +104,6 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 | Visualization | Matplotlib |
 | Hardware | GoPro ×3 (ring), Smartphones ×2 (proof-of-concept) |
 
----
-
 ## Limitations
 
 - Proof-of-concept on two non-competitive subjects — not designed to evaluate sports performance
@@ -121,14 +111,10 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 - GoPro multi-camera calibration not resolved — ecological deployment pending
 - No ground-truth comparison with marker-based systems
 
----
-
 ## Academic Reference
 
 > Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
 
 *Python scripts and data processing: J. Birba.*
-
----
 
 *Jérémy Birba — [LinkedIn](https://linkedin.com/in/birba-jeremy) | [GitHub](https://github.com/JeremyDataHub)*
