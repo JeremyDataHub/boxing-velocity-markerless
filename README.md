@@ -1,14 +1,14 @@
 # Markerless 3D Boxing Punch Velocity Estimation
 
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Pose2Sim](https://img.shields.io/badge/Pose2Sim-markerless-green.svg)](https://github.com/perfanalytics/pose2sim)
+[![OpenCV](https://img.shields.io/badge/OpenCV-computer_vision-red.svg)](https://opencv.org/)
+[![SciPy](https://img.shields.io/badge/SciPy-signal_processing-orange.svg)](https://scipy.org/)
+
 > Multi-camera markerless motion capture pipeline for estimating 3D boxing punch velocity in ecological conditions. Developed within the REVEA research program (French Boxing Federation × M2S Laboratory, Université Rennes 2).
 
 
-<p align="center">
-  <img src="media/ring_setup.jpg" alt="Boxing ring multi-camera setup"/>
-</p>
-
-
-## Results
+## Proof-of-Concept Results
 
 | Subject | Wrist | Max Velocity (m/s) | Mean Velocity (m/s) |
 |----------|--------|-------------------|---------------------|
@@ -17,12 +17,12 @@
 | Subject 2 | Right | 8.48  | 6.39 |
 | Subject 2 | Left  | 4.80  | 4.74 |
 
-A velocity threshold of **4 m/s** allows automatic discrimination between effective punches and guard repositioning movements.
+A velocity threshold of 4 m/s allows automatic discrimination between effective punches and guard repositioning movements.
 
 <p align="center">
-  <img src="figures/jeremy_resultant_velocity.png" width="600" alt="Resultant wrist velocity"/>
+  <img src="figures/velocity_profile.png" width="700" alt="Resultant wrist velocity with detected peaks"/>
   <br/>
-  <em>Example of resultant wrist velocity with detected peaks</em>
+  <em>Resultant wrist velocity showing automatic punch detection</em>
 </p>
 
 
@@ -41,80 +41,74 @@ The challenge was to design a robust multi-camera video pipeline capable of esti
 
 Several solutions were explored:
 
-- **Sports2D**  
-  Limited to planar 2D analysis. Not suitable for rotating athletes.
+**Sports2D** is limited to planar 2D analysis and not suitable for rotating athletes who move freely in space.
 
-- **DeepLabCut**  
-  Requires extensive manual labeling. 3D reconstruction requires additional complex setup.
+**DeepLabCut** requires extensive manual labeling of training data. 3D reconstruction requires additional complex setup and the uniformity of boxing gloves makes keypoint detection challenging.
 
-- **Custom OpenCV tracking**  
-  Technically feasible but would require full multi-view 3D reconstruction implementation.
+**Custom OpenCV tracking** would be technically feasible but require implementing a complete multi-view 3D reconstruction framework from scratch.
 
-Because boxers move freely in space and continuously rotate relative to cameras, a full 3D reconstruction framework was necessary.
-
-This led to the selection of **Pose2Sim**.
+Because boxers move freely in space and continuously rotate relative to cameras, a full 3D reconstruction framework was necessary. This led to the selection of Pose2Sim.
 
 
 ## Pose2Sim
 
-**[Pose2Sim](https://github.com/perfanalytics/pose2sim)** is an open-source markerless motion capture pipeline that:
+[Pose2Sim](https://github.com/perfanalytics/pose2sim) is an open-source markerless motion capture pipeline developed by David Pagnon. The system performs 2D pose estimation on each camera view independently, then uses multi-view triangulation to reconstruct 3D joint trajectories.
 
-- Uses synchronized multi-camera videos  
-- Performs intrinsic and extrinsic calibration  
-- Reconstructs 3D joint trajectories via triangulation  
-- Exports joint coordinates in `.trc` format  
+The pipeline involves synchronized multi-camera videos, intrinsic and extrinsic calibration, 2D pose estimation per camera, triangulation to obtain 3D coordinates, and export to .trc format (industry-standard biomechanics file).
 
 When cameras are properly calibrated and synchronized, Pose2Sim generates temporally consistent 3D coordinates of body joints, enabling biomechanical analysis.
 
-In this project, the exported `.trc` files were used to compute punch velocities directly from reconstructed wrist trajectories.
+In this project, the .trc file contains 3D positions (x, y, z) of each joint at each timestamp. This file can be visualized directly in OpenSim for quality control. Python scripts then process the same .trc file to compute punch velocities from wrist trajectories.
+
+<p align="center">
+  <img src="media/pose_estimation_visualization.gif" width="600" alt="3D pose estimation tracking"/>
+  <br/>
+  <em>3D joint tracking from multi-camera triangulation</em>
+</p>
 
 
 ## System Pipeline
 
+### Proof-of-Concept Setup
+
+Initial trials with GoPro cameras in the boxing ring environment faced calibration challenges due to wide-angle fish-eye distortion on the overhead camera, large inter-camera distances (approximately 5m), and uncontrolled lighting with background activity.
+
+A controlled proof-of-concept was therefore conducted using two synchronized smartphones at optimal distance (approximately 2m), demonstrating protocol feasibility before scaling to ecological conditions.
+
 ```
-Camera 1 (1080p 120fps)  ──┐
-                           ├──▶ Synchronization
-Camera 2 (1080p 120fps)  ──┘           │
-                                       ▼
-                        Intrinsic Calibration (Pose2Sim)
-                                       │
-                                       ▼
-                        Extrinsic Calibration (Pose2Sim)
-                                       │
-                                       ▼
-                          2D Pose Estimation (Pose2Sim)
-                                       │
-                                       ▼
-                           3D Triangulation (Pose2Sim)
-                                       │
-                                       ▼
-                        3D Joint Positions (.trc Output)
-                                       │
-                                       ▼
-                             Velocity Computation
-                                       │
-                                       ▼
-                        Peak Detection (Threshold 4 m/s)
+Camera 1 (Smartphone 1080p 60fps)  ──┐
+                                     ├──▶ Synchronization
+Camera 2 (Smartphone 1080p 60fps)  ──┘           │
+                                                  ▼
+                           Intrinsic Calibration (Pose2Sim)
+                                                  │
+                                                  ▼
+                           Extrinsic Calibration (Pose2Sim)
+                                                  │
+                                                  ▼
+                       2D Pose Estimation per Camera (Pose2Sim)
+                                                  │
+                                                  ▼
+                              3D Triangulation (Pose2Sim)
+                                                  │
+                                                  ▼
+                           3D Joint Positions (.trc Output)
+                                                  │
+                                                  ▼
+                                Velocity Computation
+                                                  │
+                                                  ▼
+                           Peak Detection (Threshold 4 m/s)
 ```
 
-<p align="center">
-  <img src="media/pose2sim_skeleton.gif" width="600" alt="3D skeleton reconstruction"/>
-  <br/>
-  <em>3D reconstruction example generated by Pose2Sim</em>
-</p>
+This validated protocol can now be adapted to the original ring setup with improved calibration procedures (larger checkerboard format, optimized camera placement).
 
 
 ## Velocity Computation Strategy
 
-The analysis is performed on `.trc` files generated by Pose2Sim after 3D reconstruction and filtering.
+The analysis is performed on .trc files generated by Pose2Sim after 3D reconstruction and filtering.
 
-The wrist joint is used as a proxy for fist velocity.
-
-From the 3D position over time:
-
-- Velocity components are computed using numerical time differentiation  
-- Resultant velocity is computed as √(vx² + vy² + vz²)  
-- Peaks above 4 m/s are detected as effective punches  
+The wrist joint is used as a proxy for fist velocity. From the 3D position over time, velocity components are computed using numerical time differentiation. Resultant velocity is computed as the square root of the sum of squared velocity components (vx² + vy² + vz²). Peaks above 4 m/s are detected as effective punches.
 
 The full implementation is available in `vitesses_poings.py`.
 
@@ -123,31 +117,23 @@ The full implementation is available in `vitesses_poings.py`.
 
 ### Fish-Eye Overhead Camera
 
-The overhead GoPro required fish-eye mode to capture the entire ring area.  
-This significantly complicated extrinsic calibration.
+The overhead GoPro required fish-eye mode to capture the entire ring area. This significantly complicated extrinsic calibration.
 
-An A3 checkerboard with 7 cm squares was selected and tested at optimized distances to ensure stable detection.
-
-<p align="center">
-  <img src="media/calibration_checkerboard.jpg" width="400" alt="Calibration checkerboard"/>
-  <br/>
-  <em>A3 checkerboard used for intrinsic and extrinsic calibration</em>
-</p>
+An A3 checkerboard with 7 cm squares was selected and tested at optimized distances to ensure stable detection across all camera views.
 
 
 ### Multi-Person Pose Instability
 
-Multi-person detection produced unstable reconstructions due to occlusions and overlapping limbs.
+Multi-person detection produced unstable reconstructions due to occlusions and overlapping limbs during sparring sequences.
 
-Single-subject segmented processing was adopted to improve robustness.
+Single-subject segmented processing was adopted to improve reconstruction robustness and reduce computational overhead.
 
 
 ### Camera Synchronization
 
-Initial synchronization attempts produced low correlation scores.
+Initial synchronization attempts produced low correlation scores because captured footage lacked sufficiently distinctive movement features.
 
-Introducing a vertical jump at the start of each recording created a strong temporal alignment event.
-
+Introducing a vertical jump at the start of each recording created a strong temporal alignment event that significantly improved synchronization quality.
 
 
 ## Tech Stack
@@ -159,29 +145,50 @@ Introducing a vertical jump at the start of each recording created a strong temp
 | Numerical Processing | NumPy, SciPy |
 | Computer Vision | OpenCV |
 | Visualization | Matplotlib |
-| Hardware | GoPro ×3, Smartphones ×3 |
+| Hardware | GoPro ×3, Smartphones ×2 |
 
 
-## Limitations
+## Potential Applications
 
-- Feasibility study conducted on two non-competitive subjects  
-- No ground-truth comparison with marker-based motion capture  
-- Wrist used as proxy for fist velocity  
-- Overhead fish-eye camera not fully integrated in final reconstruction pipeline  
+This markerless 3D motion analysis framework can be adapted to various domains beyond combat sports.
+
+### Sports Science
+Combat sports performance analysis (boxing, MMA, fencing), racket sports swing analysis (tennis, badminton), and movement quality assessment in athletics.
+
+### Rehabilitation & Healthcare
+Gait analysis in clinical settings, post-injury movement monitoring, and elderly fall risk assessment.
+
+### Ergonomics & Industry
+Workplace motion assessment, manual handling risk evaluation, and human-robot interaction studies.
+
+### Research
+Biomechanics studies in ecological conditions, multi-camera 3D reconstruction validation, and markerless versus marker-based comparison protocols.
+
+
+## Limitations & Future Work
+
+### Current Implementation
+Protocol validated in controlled lab conditions using smartphones. Analysis conducted on two non-competitive subjects. No ground-truth comparison with marker-based motion capture systems. Wrist used as proxy for fist velocity.
+
+### Next Steps for Ecological Deployment
+Adapt calibration procedures for larger inter-camera distances typical of ring environments. Optimize overhead fish-eye calibration workflow to handle severe distortion. Conduct multi-subject robustness testing in actual ring environment. Integrate with VR performance comparison component (REVEA program objective).
 
 
 ## Academic Reference
 
 This project was conducted as part of:
 
-> **Birba, J. (2024).** Markerless 3D estimation of boxing punch velocity in ecological conditions.  
-> Master 1 DigiSport Graduate School, Université Rennes 2.  
-> REVEA Research Program — M2S Laboratory × French Boxing Federation.
+> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 1 DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
 
 
-## Rights
+## Citation & Usage
 
-> ⚠️ All rights reserved. This repository presents methodology, results, and visualizations for academic and portfolio purposes.  
-> No part of this work may be reproduced or used without permission.
+This project was conducted within the REVEA research program (M2S Laboratory × French Boxing Federation).
 
+**For academic or research citation:**
 
+> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D Boxing Velocity Estimation. REVEA Program, Université Rennes 2.
+
+**For collaboration or commercial inquiries:** [Remplace par ton email ou LinkedIn]
+
+**License:** Open for portfolio review and academic discussion. Contact for other uses.
