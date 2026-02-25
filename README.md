@@ -116,14 +116,12 @@ Initial cross-correlation scores were below 0.5. A vertical jump at the start of
 
 ## Limitations
 
-- Proof-of-concept on two non-competitive subjects — not designed to evaluate sports performance
-- Wrist used as proxy for fist velocity
-- GoPro multi-camera calibration not resolved — ecological deployment pending
+- Proof of concept based on a small sample size (two non-competitive subjects)
 - No ground-truth comparison with marker-based systems
 
 ## Academic Reference
 
-> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DigiSport Graduate School, Université Rennes 2. REVEA Research Program, M2S Laboratory × French Boxing Federation.
+> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DIGISPORT Graduate School, Rennes 2 University. REVEA Research Program, M2S Laboratory × French Boxing Federation.
 
 *Project conducted as part of a team. Python implementation, Pose2Sim pipeline and data processing: J. Birba.*
 
