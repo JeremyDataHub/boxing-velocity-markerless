@@ -55,29 +55,30 @@ punch_velocity.py
 ![Pose estimation visualization](figures/pose_estimation_visualization.gif)
 
 
+
 ## Velocity Computation
 
-3D wrist positions from the `.trc` file are used as a proxy for fist velocity. Velocity components on each axis are obtained by numerical time differentiation. The resultant velocity is computed as:
-
-$$v = \sqrt{v_x^2 + v_y^2 + v_z^2}$$
+3D wrist positions from the `.trc` file are used as a proxy for fist velocity. Velocity components on each axis are obtained by numerical time differentiation. The resultant velocity is computed as the Euclidean norm: v = sqrt(vx² + vy² + vz²).
 
 Full implementation in `punch_velocity.py`. Raw `.trc` data not included for privacy reasons.
 
-<table>
-  <tr>
-    <td align="center"><img src="figures/velocity_axes_left_s1.png" width="1200" alt="Left wrist all axes"/><br/><em>Left wrist — All axes — Subject 1</em></td>
-    <td align="center"><img src="figures/velocity_axes_right_s1.png" width="600" alt="Right wrist all axes"/><br/><em>Right wrist — All axes — Subject 1</em></td>
-  </tr>
-</table>
+**Velocity components per axis**
 
-<table>
-  <tr>
-    <td align="center"><img src="figures/velocity_resultant_left_s1.png" width="550" alt="Left wrist resultant"/><br/><em>Left wrist — Resultant — Subject 1</em></td>
-    <td align="center"><img src="figures/velocity_resultant_right_s1.png" width="550" alt="Right wrist resultant"/><br/><em>Right wrist — Resultant — Subject 1</em></td>
-  </tr>
-</table>
+![Left wrist all axes](figures/velocity_axes_left_s1.png)
+*Left wrist — All axes — Subject 1*
 
-A threshold of ~4 m/s was identified to distinguish effective punches from guard movements and repositioning.
+![Right wrist all axes](figures/velocity_axes_right_s1.png)
+*Right wrist — All axes — Subject 1*
+
+**Resultant velocity and punch detection**
+
+Peaks above ~4 m/s correspond to effective punches. Below this threshold, movements reflect guard positioning and repositioning.
+
+![Left wrist resultant](figures/velocity_resultant_left_s1.png)
+*Left wrist — Resultant — Subject 1*
+
+![Right wrist resultant](figures/velocity_resultant_right_s1.png)
+*Right wrist — Resultant — Subject 1*
 
 
 ## Results
