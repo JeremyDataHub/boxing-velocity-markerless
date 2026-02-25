@@ -95,11 +95,14 @@ For reference, punch velocities in amateur boxing typically range from 4 to 8 m/
 
 ## Key Challenges
 
-**Fish-eye overhead camera** — The overhead GoPro required fish-eye mode to cover the full ring area, significantly complicating extrinsic calibration. Multiple checkerboard sizes and distances were tested without reaching sufficient precision for the ring setup.
+**Fish-eye overhead camera**
+The overhead GoPro required fish-eye mode to cover the full ring area, significantly complicating extrinsic calibration. Multiple checkerboard sizes and distances were tested without reaching sufficient precision for the ring setup.
 
-**Multi-person pose estimation** — Pose2Sim's multi-person mode produced unstable reconstructions due to occlusions and overlapping limbs during sparring. Single-subject processing on isolated sequences was adopted.
+**Multi-person pose estimation**
+Pose2Sim's multi-person mode produced unstable reconstructions due to occlusions and overlapping limbs during sparring. Single-subject processing on isolated sequences was adopted.
 
-**Camera synchronization** — Initial cross-correlation scores were below 0.5. A vertical jump at the start of each recording provided a reliable temporal alignment signal.
+**Camera synchronization**
+Initial cross-correlation scores were below 0.5. A vertical jump at the start of each recording provided a reliable temporal alignment signal.
 
 ## Tech Stack
 
