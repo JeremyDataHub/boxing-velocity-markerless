@@ -121,7 +121,7 @@ Initial cross-correlation scores were below 0.5. A vertical jump at the start of
 
 ## Academic Reference
 
-> Birba, J., Giot, B., Le Gall, M. (2025). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DIGISPORT Graduate School, Rennes 2 University. REVEA Research Program, M2S Laboratory × French Boxing Federation.
+> Birba, J., Giot, B., Le Gall, M. (2024). Markerless 3D estimation of boxing punch velocity in ecological conditions. Master 2, DIGISPORT Graduate School, Rennes 2 University. REVEA Research Program, M2S Laboratory × French Boxing Federation.
 
 *Project conducted as part of a team. Python implementation, Pose2Sim pipeline and data processing: J. Birba.*
 
