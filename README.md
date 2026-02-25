@@ -6,6 +6,7 @@
 
 > Multi-camera markerless pipeline for 3D punch velocity estimation in ecological conditions. Developed within the REVEA research program — French Boxing Federation × M2S Laboratory, Rennes 2 University.
 
+![Pose estimation visualization](figures/pose_estimation_visualization.gif)
 
 ## Context
 
@@ -51,9 +52,6 @@ punch_velocity.py
  ├── Resultant velocity
  └── Punch detection (scipy.signal.find_peaks)
 ```
-
-![Pose estimation visualization](figures/pose_estimation_visualization.gif)
-
 
 ## Velocity Computation
 
