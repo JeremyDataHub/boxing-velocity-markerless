@@ -1,8 +1,10 @@
 # Boxing Punch Velocity Analysis — Markerless 3D Motion Capture
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![Pose2Sim](https://img.shields.io/badge/Pose2Sim-markerless-green.svg)](https://github.com/perfanalytics/pose2sim)
-[![SciPy](https://img.shields.io/badge/SciPy-signal_processing-orange.svg)](https://scipy.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-signal_processing-orange.svg)](https://numpy.org/)
+[![SciPy](https://img.shields.io/badge/SciPy-velocity_analysis-red.svg)](https://scipy.org/)
+[![OpenSim](https://img.shields.io/badge/OpenSim-visualization-purple.svg)](https://opensim.stanford.edu/)
 
 > Multi-camera markerless pipeline for 3D punch velocity estimation in ecological conditions. Developed within the REVEA research program — French Boxing Federation × M2S Laboratory, Rennes 2 University.
 
@@ -104,6 +106,7 @@ Pose2Sim's multi-person mode produced unstable reconstructions due to occlusions
 ### Camera synchronization
 Initial cross-correlation scores were below 0.5. A vertical jump at the start of each recording provided a reliable temporal alignment signal.
 
+
 ## Tech Stack
 
 | Category | Tools |
@@ -111,7 +114,7 @@ Initial cross-correlation scores were below 0.5. A vertical jump at the start of
 | 3D markerless capture | [Pose2Sim](https://github.com/perfanalytics/pose2sim) (Pagnon, 2022) |
 | Programming | Python |
 | Signal processing | NumPy, SciPy |
-| Visualization | Matplotlib |
+| Visualization | Matplotlib, [OpenSim](https://github.com/opensim-org) |
 | Hardware | GoPro ×3 (ring), Smartphones ×2 (proof-of-concept) |
 
 ## Installation & Setup
