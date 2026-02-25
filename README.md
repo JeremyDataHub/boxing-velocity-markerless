@@ -65,7 +65,7 @@ Full implementation in `punch_velocity.py`. Raw `.trc` data not included for pri
 
 <table>
   <tr>
-    <td align="center"><img src="figures/velocity_axes_left_s1.png" width="600" alt="Left wrist all axes"/><br/><em>Left wrist — All axes — Subject 1</em></td>
+    <td align="center"><img src="figures/velocity_axes_left_s1.png" width="1200" alt="Left wrist all axes"/><br/><em>Left wrist — All axes — Subject 1</em></td>
     <td align="center"><img src="figures/velocity_axes_right_s1.png" width="600" alt="Right wrist all axes"/><br/><em>Right wrist — All axes — Subject 1</em></td>
   </tr>
 </table>
