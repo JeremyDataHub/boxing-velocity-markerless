@@ -71,7 +71,7 @@ Full implementation in `punch_velocity.py`. Raw `.trc` data not included for pri
 
 ### Resultant velocity and punch detection
 
-Peaks above ~4 m/s correspond to effective punches. Below this threshold, movements reflect guard positioning and repositioning.
+Peaks above ~4 m/s correspond to effective punches. This threshold was empirically determined from 44 punches observed in the videos (28 for subject 1 and 16 for subject 2). Movements below this threshold reflected guard positioning and repositioning. 
 
 ![Left wrist resultant](figures/velocity_resultant_left_s1.png)
 <p align="center"><em>Left wrist — Subject 1</em></p>
