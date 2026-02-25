@@ -66,20 +66,20 @@ Full implementation in `punch_velocity.py`. Raw `.trc` data not included for pri
 ### Velocity components per axis
 
 ![Left wrist all axes](figures/velocity_axes_left_s1.png)
-<p align="center"><em>Left wrist — All axes — Subject 1</em></p>
+<p align="center"><em>Left wrist — Subject 1</em></p>
 
 ![Right wrist all axes](figures/velocity_axes_right_s1.png)
-<p align="center"><em>Right wrist — All axes — Subject 1</em></p>
+<p align="center"><em>Right wrist — Subject 1</em></p>
 
 ### Resultant velocity and punch detection
 
 Peaks above ~4 m/s correspond to effective punches. Below this threshold, movements reflect guard positioning and repositioning.
 
 ![Left wrist resultant](figures/velocity_resultant_left_s1.png)
-<p align="center"><em>Left wrist — Resultant — Subject 1</em></p>
+<p align="center"><em>Left wrist — Subject 1</em></p>
 
 ![Right wrist resultant](figures/velocity_resultant_right_s1.png)
-<p align="center"><em>Right wrist — Resultant — Subject 1</em></p>
+<p align="center"><em>Right wrist — Subject 1</em></p>
 
 ## Results
 
