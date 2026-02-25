@@ -114,6 +114,20 @@ Initial cross-correlation scores were below 0.5. A vertical jump at the start of
 | Visualization | Matplotlib |
 | Hardware | GoPro ×3 (ring), Smartphones ×2 (proof-of-concept) |
 
+## Installation & Setup
+
+To reproduce this project, you need:
+1. **Pose2Sim** installed separately (see [Pose2Sim installation](https://github.com/perfanalytics/pose2sim))
+2. Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Then run:
+```bash
+python punch_velocity.py
+```
+
 ## Limitations
 
 - Proof of concept based on a small sample size (two non-competitive subjects)
